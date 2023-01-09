@@ -17,13 +17,13 @@ interface slot {
 }
 
 const Slot:FC<slot> = (props) => {
-    const [images, setImages] = useState([
+    const images = [
         Cherry,
         Orange,
         Clover,
         Diamond,
         Seven
-    ]);
+    ];
 
     const [timer, setTimer] = useState(0);
     const [count, setCount] = useState(0);
@@ -31,31 +31,36 @@ const Slot:FC<slot> = (props) => {
     useEffect(() => {
         setTimeout(() => {
             if(props.animate){
+                console.log("animating");
                 if(count < 5){
                     setCount(prev => prev + 1);
                 }else{
                     setCount(1);
                 }
 
-                setTimer(prev => prev + 1);
                 if(timer > 30){
                     stopAnimation();
                 }
             }
-        }, 100)
+        }, 150)
+        setTimer(prev => prev + 1);
+        if(timer >= 31){
+            setTimer(0);
+        }
     }, [timer])
 
 
     useEffect(() => {
+        console.log(props.animate)
         if(props.animate){
             startAnimation();
         }
     }, [props.animate])
 
     const startAnimation = () => {
+        setTimer(0);
         
         setCount(1);
-        setTimer(0);
     }
     const stopAnimation = () => {
         setCount(0);
