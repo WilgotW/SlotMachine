@@ -7,7 +7,7 @@ import Home from './components/Home';
 function App() {
   return (
     <div className="App">
-      <Home name='Wilgot' age={18} />
+      <Home name='[User]' age={18} />
     </div>
   );
 }

@@ -33,15 +33,16 @@ span{
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background: gold;
-  height: 600px;
+  background: red;
+  border: solid black 25px;
+  height: 500px;
   width: 800px;
   border-radius: 20px;
 }
 .slot{
   
   background: rgb(235, 235, 235);
-  border: solid black 5px;
+  border: solid black 7px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
