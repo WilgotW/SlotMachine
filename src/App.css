@@ -1,38 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap');
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img{
+  height: 128px;
+  width: 128px;
+  image-rendering: pixelated;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1{
+  font-family: 'Cabin', sans-serif;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+h2{
+  font-family: 'Cabin', sans-serif;
+}
+span{
+  font-family: 'Cabin', sans-serif;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.center{
+  display: flex;
+  justify-content: center;
+}
+.center.column{
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slot-bar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: gold;
+  height: 600px;
+  width: 800px;
+  border-radius: 20px;
+}
+.slot{
+  
+  background: rgb(235, 235, 235);
+  border: solid black 5px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 200px;
 }
