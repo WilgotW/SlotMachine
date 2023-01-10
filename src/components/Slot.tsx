@@ -8,7 +8,7 @@ import Clover from '../images/Clover.png';
 import Diamond from '../images/Diamond.png';
 import Seven from '../images/Seven.png';
 
-interface slot {
+interface IProps {
     number: number,
     activeImageNumber: number,
     animate: boolean,
@@ -16,7 +16,7 @@ interface slot {
     check: () => void
 }
 
-const Slot:FC<slot> = (props) => {
+const Slot = ({number, activeImageNumber, animate, setAnimate, check}: IProps) => {
     const images = [
         Cherry,
         Orange,
@@ -30,7 +30,7 @@ const Slot:FC<slot> = (props) => {
 
     useEffect(() => {
         setTimeout(() => {
-            if(props.animate){
+            if(animate){
                 console.log("animating");
                 if(count < 5){
                     setCount(prev => prev + 1);
@@ -51,11 +51,11 @@ const Slot:FC<slot> = (props) => {
 
 
     useEffect(() => {
-        console.log(props.animate)
-        if(props.animate){
+        console.log(animate)
+        if(animate){
             startAnimation();
         }
-    }, [props.animate])
+    }, [animate])
 
     const startAnimation = () => {
         setTimer(0);
@@ -64,9 +64,9 @@ const Slot:FC<slot> = (props) => {
     }
     const stopAnimation = () => {
         setCount(0);
-        props.setAnimate(false);
+        setAnimate(false);
         
-        props.check();
+        check();
     }
     
     return (
@@ -74,9 +74,9 @@ const Slot:FC<slot> = (props) => {
             <div style={{display: "flex", flexDirection: "column", background: "rgba(255, 255, 0, 0.5)", borderRadius: "30px"}}>
                 {images &&
                     
-                    <img src={count <= 0 ? images[props.activeImageNumber-1] : images[count-1]} alt="" />
+                    <img src={count <= 0 ? images[activeImageNumber-1] : images[count-1]} alt="" />
                 }
-                <span>{props.number}</span>
+                <span>{number}</span>
             </div>
             
         </div>
