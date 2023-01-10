@@ -39,25 +39,29 @@ const SlotMachine:FC = (props) => {
     }
     const check = () => {
 
+        console.log("check");
+
         const newArr: number[] = [];
         for (let i = 0; i < slotCount; i++) {
             newArr[i] = randomNum(1, 5);
         }
         setNumbers(newArr);
 
-        console.log(newArr[0])
+        console.log(newArr)
+
         if(checkAllEqual(newArr)){
             if(newArr[0] == 5){
-                win(prices[newArr[0]], `Jackpot!: ${newArr[0]}. You Get ${prices[newArr[0]]}`)
+                win(newArr[0]-1, `Jackpot!: ${newArr[0]}. You Get ${prices[newArr[0]-1]}`)
             }else{
-                win(prices[newArr[0]], `you won with number ${newArr[0]}. You Get ${prices[newArr[0]]}`);
+                win(newArr[0]-1, `you won with number ${newArr[0]}. You Get ${prices[newArr[0]-1]}`);
             }
             
             setPlayLog([
-                prices[newArr[0]],
+                prices[newArr[0]-1],
                 ...playLog
             ])
         }else{
+            console.log("no win");
             setPlayLog([
                 -1,
                 ...playLog
@@ -67,7 +71,7 @@ const SlotMachine:FC = (props) => {
 
     function win(winNumber: number, winMessage: string) {
         console.log(winMessage);
-        setMoney(prev => prev + prices[winNumber-1]);
+        setMoney(prev => prev + prices[winNumber]);
     }
 
     function checkAllEqual(arr: number[]): boolean { return arr.every(n => n === arr[0])}

@@ -31,10 +31,10 @@ const Slot = ({number, activeImageNumber, animate, setAnimate, setDoCheck}: IPro
     useEffect(() => {
         setTimeout(() => {
             if(animate){
-                if(count < 5){
+                if(count < 4){
                     setCount(prev => prev + 1);
                 } else{
-                    setCount(1);
+                    setCount(0);
                 }
 
                 if(timer > 30 - count){
@@ -45,7 +45,7 @@ const Slot = ({number, activeImageNumber, animate, setAnimate, setDoCheck}: IPro
             if(timer >= 31){
                 setTimer(0);
             }
-        }, 150)
+        }, 100)
     }, [timer])
 
 
@@ -61,7 +61,7 @@ const Slot = ({number, activeImageNumber, animate, setAnimate, setDoCheck}: IPro
         setCount(1);
     }
     const stopAnimation = () => {
-        setCount(0);
+        setCount(-1);
         setAnimate(false);
         
         setDoCheck(true);
@@ -72,7 +72,7 @@ const Slot = ({number, activeImageNumber, animate, setAnimate, setDoCheck}: IPro
             <div style={{display: "flex", flexDirection: "column", background: "rgba(255, 255, 0, 0.5)", borderRadius: "30px"}}>
                 {images &&
                     
-                    <img src={count <= 0 ? images[activeImageNumber-1] : images[count-1]} alt="" />
+                    <img src={!animate ? images[activeImageNumber-1] : images[count]} alt="" />
                 }
                 <span>{number}</span>
             </div>
