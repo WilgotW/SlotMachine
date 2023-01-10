@@ -12,8 +12,8 @@ interface slot {
     number: number,
     activeImageNumber: number,
     animate: boolean,
-    setAnimate: any,
-    check: any
+    setAnimate: React.Dispatch<React.SetStateAction<boolean>>,
+    check: () => void
 }
 
 const Slot:FC<slot> = (props) => {
