@@ -15,6 +15,8 @@ const SlotMachine:FC = (props) => {
 
     const [animate, setAnimate] = useState(false);
 
+    const [doCheck, setDoCheck] = useState(false);
+
     useEffect(() => {
         const newArr: number[] = [];
         for (let i = 0; i < slotCount; i++) {
@@ -22,6 +24,13 @@ const SlotMachine:FC = (props) => {
         }
         setNumbers(newArr);
     }, [])
+
+    useEffect(()=>{
+        if(doCheck){
+            setDoCheck(false);
+            check();
+        }
+    }, [doCheck])
 
     const play = () => {
         if(money <= 0) return;
@@ -70,7 +79,7 @@ const SlotMachine:FC = (props) => {
             <div>
                 <SideBar money={money} play={play} playLog={playLog} />
                 <div className='slot-bar'>
-                    {numbers.map(n => <Slot number={n} activeImageNumber={n} animate={animate} setAnimate={setAnimate} check={check}/>)}
+                    {numbers.map(n => <Slot number={n} activeImageNumber={n} animate={animate} setAnimate={setAnimate} setDoCheck={setDoCheck}/>)}
                 </div>
                 <div style={{display:"flex", flexDirection: "column"}}>
                     <h2>Prices:</h2>

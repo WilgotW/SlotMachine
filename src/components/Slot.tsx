@@ -13,10 +13,10 @@ interface IProps {
     activeImageNumber: number,
     animate: boolean,
     setAnimate: React.Dispatch<React.SetStateAction<boolean>>,
-    check: () => void
+    setDoCheck: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Slot = ({number, activeImageNumber, animate, setAnimate, check}: IProps) => {
+const Slot = ({number, activeImageNumber, animate, setAnimate, setDoCheck}: IProps) => {
     const images = [
         Cherry,
         Orange,
@@ -64,7 +64,7 @@ const Slot = ({number, activeImageNumber, animate, setAnimate, check}: IProps) =
         setCount(0);
         setAnimate(false);
         
-        check();
+        setDoCheck(true);
     }
     
     return (
