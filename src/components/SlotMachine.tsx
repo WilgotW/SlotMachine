@@ -25,7 +25,6 @@ const SlotMachine:FC = (props) => {
 
     const play = () => {
         if(money <= 0) return;
-        console.log(animate);
         setAnimate(true);
         setMoney(prev => prev - 1);
     }
@@ -37,11 +36,12 @@ const SlotMachine:FC = (props) => {
         }
         setNumbers(newArr);
 
+        console.log(newArr[0])
         if(checkAllEqual(newArr)){
             if(newArr[0] == 5){
-                win(newArr[0]*2, `Jackpot!: ${newArr[0]}. You Get ${newArr[0]}`)
+                win(prices[newArr[0]], `Jackpot!: ${newArr[0]}. You Get ${prices[newArr[0]]}`)
             }else{
-                win(newArr[0], `you won with number ${newArr[0]}. You Get ${newArr[0]}`);
+                win(prices[newArr[0]], `you won with number ${newArr[0]}. You Get ${prices[newArr[0]]}`);
             }
             
             setPlayLog([

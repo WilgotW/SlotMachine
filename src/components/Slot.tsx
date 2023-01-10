@@ -31,27 +31,25 @@ const Slot = ({number, activeImageNumber, animate, setAnimate, check}: IProps) =
     useEffect(() => {
         setTimeout(() => {
             if(animate){
-                console.log("animating");
                 if(count < 5){
                     setCount(prev => prev + 1);
-                }else{
+                } else{
                     setCount(1);
                 }
 
-                if(timer > 30){
+                if(timer > 30 - count){
                     stopAnimation();
                 }
             }
+            setTimer(prev => prev + 1);
+            if(timer >= 31){
+                setTimer(0);
+            }
         }, 150)
-        setTimer(prev => prev + 1);
-        if(timer >= 31){
-            setTimer(0);
-        }
     }, [timer])
 
 
     useEffect(() => {
-        console.log(animate)
         if(animate){
             startAnimation();
         }
